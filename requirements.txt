@@ -1,0 +1,11 @@
+bcrypt==3.1.7
+cffi==1.14.0
+gevent==20.6.0
+greenlet==0.4.16
+peewee==3.13.3
+pycparser==2.20
+pysqlite3==0.4.3
+pyzmq==19.0.1
+six==1.15.0
+zope.event==4.4
+zope.interface==5.1.0

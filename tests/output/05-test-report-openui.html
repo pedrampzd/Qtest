@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Test Report — Graph Phone Book (Q-Test) · OpenUI</title>
+  <link rel="stylesheet" href="./openui-assets/openui-styles.css" />
+  <style>
+    :root {
+      color-scheme: light;
+      --page-bg: #f4f5f7;
+      --page-ink: #1a1d23;
+      --page-muted: #5c6570;
+      --page-line: #dde1e6;
+      --page-accent: #0b5fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+      background: var(--page-bg);
+      color: var(--page-ink);
+      min-height: 100vh;
+    }
+    .page-shell {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px 16px 48px;
+    }
+    .banner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding: 14px 16px;
+      border: 1px solid var(--page-line);
+      background: #fff;
+    }
+    .banner h1 {
+      margin: 0 0 4px;
+      font-size: 18px;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+    .banner p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--page-muted);
+      line-height: 1.45;
+      max-width: 52ch;
+    }
+    .banner a {
+      color: var(--page-accent);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .banner a:hover { text-decoration: underline; }
+    .banner-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-end;
+    }
+    #status {
+      font-size: 12px;
+      color: var(--page-muted);
+    }
+    #status.error { color: #b42318; }
+    #root {
+      background: #fff;
+      border: 1px solid var(--page-line);
+      padding: 8px;
+      min-height: 240px;
+    }
+    noscript {
+      display: block;
+      padding: 16px;
+      background: #fff;
+      border: 1px solid var(--page-line);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="banner">
+      <div>
+        <h1>Graph Q-Test — Interactive report</h1>
+        <p>
+          OpenUI view of <strong>05-test-report.pdf</strong> for reviewers.
+          Official deliverable remains the PDF; this page is the interactive summary.
+        </p>
+      </div>
+      <div class="banner-actions">
+        <a href="./05-test-report.pdf">Open official PDF</a>
+        <a href="./05-test-report.openui.txt">View raw OpenUI Lang</a>
+        <span id="status">Loading OpenUI renderer…</span>
+      </div>
+    </header>
+
+    <noscript>
+      JavaScript is required to render this OpenUI report.
+      Please open <a href="./05-test-report.pdf">05-test-report.pdf</a> instead,
+      or read <a href="./05-test-report.openui.txt">05-test-report.openui.txt</a>.
+    </noscript>
+
+    <div id="root"></div>
+  </div>
+
+  <script src="./openui-assets/openui-bundle.min.js"></script>
+  <script>
+    (function () {
+      var statusEl = document.getElementById("status");
+      function fail(msg) {
+        statusEl.textContent = msg;
+        statusEl.className = "error";
+        document.getElementById("root").innerHTML =
+          "<div style='padding:16px;font-size:14px;line-height:1.5'>" +
+          "<strong>Could not render OpenUI.</strong><br/>" + msg +
+          "<br/><br/>Open the <a href='./05-test-report.pdf'>PDF</a> or " +
+          "<a href='./05-test-report.openui.txt'>raw OpenUI file</a> instead.</div>";
+      }
+
+      if (!window.__OpenUI) {
+        fail("OpenUI bundle did not load. Keep the openui-assets/ folder next to this HTML file.");
+        return;
+      }
+
+      var React = window.__OpenUI.React;
+      var createRoot = window.__OpenUI.createRoot;
+      var Renderer = window.__OpenUI.Renderer;
+      var openuiChatLibrary = window.__OpenUI.openuiChatLibrary;
+
+      // Embedded OpenUI Lang generated from 05-test-report.pdf (15 July 2026)
+      var OPENUI_RESPONSE = [
+        'root = Card([header, meta, summaryCallout, tags, sep1, methodTitle, methodSteps, sep2, resultsTitle, suiteTable, passNote, caseTable, sep3, bugsTitle, severityChart, bugSections, sep4, fixTitle, fixList, conclusion, footer])',
+        '',
+        'header = CardHeader("Test Report — Graph Phone Book (Q-Test)", "Interactive OpenUI summary for reviewers")',
+        'meta = TextContent("Date: 15 July 2026 · Test Engineer: Pedram Pourzand · SUT: src/phon_book/ (Python, peewee, ZeroMQ) · Brief: Graph Q-Test", "small")',
+        'summaryCallout = Callout("success", "Automated suite: 19/19 passed", "Last run 15 July 2026 in about two seconds, with 4 peewee deprecation warnings (noise, not failures). A green suite characterizes current behavior — it does not mean the product matches the brief.")',
+        'tags = TagBlock(["19 tests passed", "10 bugs found", "2 critical", "3 major", "4 minor", "1 trivial"])',
+        '',
+        'sep1 = Separator()',
+        'methodTitle = TextContent("1. What I did", "large-heavy")',
+        'methodSteps = Steps([m1, m2, m3, m4])',
+        'm1 = StepsItem("Read the brief", "Commands, parameters, expected {command_name, result} replies, and the sample-file flow.")',
+        'm2 = StepsItem("Read the code", "server.py, client.py, core/auth.py, core/phone_book.py, core/models.py, factory_command.py, README, samples/commands.json.")',
+        'm3 = StepsItem("Design and automate", "Wrote cases/scenarios, split manual vs automate, then a thin PhoneBookClient over the dispatcher plus two real ZeroMQ tests that spawn server.py.")',
+        'm4 = StepsItem("Execute and report", "Ran the suite, checked a few manual spots, and documented bugs from that mix — not guesswork.")',
+        '',
+        'sep2 = Separator()',
+        'resultsTitle = TextContent("2. Environment and automated results", "large-heavy")',
+        'suiteTable = Table([cMod, cTests, cPass, cFail])',
+        'cMod = Col("Module", ["test_auth_commands.py", "test_phone_book_commands.py", "test_zmq_protocol.py", "Total"])',
+        'cTests = Col("Tests", [7, 10, 2, 19], "number")',
+        'cPass = Col("Passed", [7, 10, 2, 19], "number")',
+        'cFail = Col("Failed", [0, 0, 0, 0], "number")',
+        'passNote = Callout("info", "How to read passed", "Most tests assert the behavior the code has today. A few lock in wrong behavior on purpose so a future fix does not silently hide a requirements gap (logout without login, phone-book writes with no sign_in, double-encoded ZeroMQ JSON).")',
+        '',
+        'caseTable = Table([cId, cDesc, cType, cResult, cNotes])',
+        'cId = Col("Case ID", ["TC-AUTH-01", "TC-AUTH-02", "TC-AUTH-04", "TC-AUTH-05", "TC-AUTH-06", "TC-AUTH-07", "TC-AUTH-08", "TC-AUTH-09", "TC-PB-01/02/04/05/07/09", "TC-SRCH-01/03/04", "TC-ZMQ-01/05", "TC-ZMQ-03"])',
+        'cDesc = Col("Description", ["Sign-up happy path", "Duplicate username", "Valid sign-in", "Wrong password", "Unknown user", "Logout signed-in user", "Logout without login", "Contacts without session", "CRUD + uniqueness", "List and search", "ZMQ happy path", "Unknown command"])',
+        'cType = Col("Type", ["Auto", "Auto", "Auto", "Auto", "Auto", "Auto", "Auto", "Auto", "Auto", "Auto", "Auto", "Auto"])',
+        'cResult = Col("Result", ["PASS", "PASS", "PASS", "PASS", "PASS", "PASS", "PASS*", "PASS*", "PASS", "PASS", "PASS*", "PASS*"])',
+        'cNotes = Col("Notes", ["Success message", "IntegrityError → BUG-002", "Tracks online user", "password is wrong", "Odd message shape → BUG-003", "Clears online list", "Defective success → BUG-004", "Documents BUG-005", "Core create/read/update/delete", "Field mismatch → BUG-006", "Double-encode → BUG-001", "Error string; server may die → BUG-008"])',
+        '',
+        'sep3 = Separator()',
+        'bugsTitle = TextContent("3. Bugs found (10)", "large-heavy")',
+        'severityChart = HorizontalBarChart(["Critical", "Major", "Minor", "Trivial"], [sevSeries], null, "Bug count", "Severity")',
+        'sevSeries = Series("Count", [2, 3, 4, 1])',
+        '',
+        'bugSections = SectionBlock([b1, b2, b3, b4, b5, b6, b7, b8, b9, b10], true)',
+        'b1 = SectionItem("bug001", "BUG-001 — Double-encoded ZeroMQ response (Critical)", [b1t, b1c])',
+        'b1t = TextContent("In server.py: s.send_json(json.dumps(out, indent=4)). send_json already serializes, so recv_json() returns a string, not a list. Needs a second json.loads.", "default")',
+        'b1c = CodeBlock("python", "s.send_json(json.dumps(out, indent=4))  # double-encodes")',
+        'b2 = SectionItem("bug002", "BUG-002 — Duplicate sign_up leaks IntegrityError (Major)", [b2t])',
+        'b2t = TextContent("Second sign_up with the same username raises UNIQUE constraint failed: user_table.username instead of a plain validation message like the brief sample.", "default")',
+        'b3 = SectionItem("bug003", "BUG-003 — Unknown user on sign_in returns a tuple (Minor)", [b3t, b3c])',
+        'b3t = TextContent("DoesNotExist path builds a tuple instead of a string. Exception text looks like a Python tuple.", "default")',
+        "b3c = CodeBlock(\"python\", \"message = 'User %s does not exist' % username, 'check_password'\")",
+        'b4 = SectionItem("bug004", "BUG-004 — Logout always claims success (Minor)", [b4t])',
+        'b4t = TextContent("logout removes the name if present, then always returns user X signed out successfully — even when X was never online.", "default")',
+        'b5 = SectionItem("bug005", "BUG-005 — Phone book ignores authentication (Major)", [b5t])',
+        'b5t = TextContent("Nothing in phone_book.py or the dispatcher checks online_users. add_phone_user works on a fresh database with no sign_in. Covered by test_phone_book_operations_do_not_require_auth.", "default")',
+        'b6 = SectionItem("bug006", "BUG-006 — Inconsistent list/search payload keys (Minor)", [b6t])',
+        'b6t = TextContent("get_all_phone_users uses phone_number (list) and includes explanation. get_phone_user_by_name / by_number use phone_numbers and omit explanation. Clients cannot share one parser.", "default")',
+        'b7 = SectionItem("bug007", "BUG-007 — Phone-book commands skip DB init (Major)", [b7t])',
+        'b7t = TextContent("Only sign_up and sign_in call before_request(). First command add_phone_user on a brand-new DB → OperationalError: no such table: phone_user_table. Fixtures hide this in the suite.", "default")',
+        'b8 = SectionItem("bug008", "BUG-008 — Unknown command can kill the server (Critical)", [b8t])',
+        'b8t = TextContent("Unknown command_name causes KeyError in the factory. server.py sends str(err) then re-raises, exiting the loop. Next request may find no server.", "default")',
+        'b9 = SectionItem("bug009", "BUG-009 — README sample path (Trivial)", [b9t])',
+        'b9t = TextContent("README points at sample/commands.json; the tree has samples/commands.json. First-run friction only.", "default")',
+        'b10 = SectionItem("bug010", "BUG-010 — Explanation: brief versus code (Minor / requirements)", [b10t])',
+        'b10t = TextContent("Brief lists explanation for add_phone_user. Code defaults to empty string; official sample omits it. Flagged for the evaluator — not an automatic binary fail without a product call.", "default")',
+        '',
+        'sep4 = Separator()',
+        'fixTitle = TextContent("4. Fix priority (recommended)", "large-heavy")',
+        'fixList = ListBlock([f1, f2, f3, f4, f5, f6], "number")',
+        'f1 = ListItem("BUG-001", "Stop double-encoding the ZeroMQ reply")',
+        'f2 = ListItem("BUG-008", "Do not re-raise after sending an error")',
+        'f3 = ListItem("BUG-007", "Call before_request() once in the dispatcher")',
+        'f4 = ListItem("BUG-005", "Gate mutating phone-book commands on online_users")',
+        'f5 = ListItem("BUG-002", "Turn integrity errors into plain result messages")',
+        'f6 = ListItem("BUG-006", "Align list and search field names")',
+        '',
+        'conclusion = Callout("warning", "Conclusion", "Nineteen automated tests ran green on purpose: the suite is a regression net and a defect catalog, not a claim that the product is brief-compliant. Command-layer CRUD and search mostly work if tables exist and sessions are ignored. Painful gaps: wire contract (double JSON), process stability (unknown command), DB bootstrap, and access control.")',
+        'footer = TextContent("Source: output/q-test/05-test-report.pdf · Companion docs: 01-test-cases, 02-test-scenarios, 03-manual-vs-automate · Automation: src/tests/", "small")'
+      ].join("\n");
+
+      try {
+        createRoot(document.getElementById("root")).render(
+          React.createElement(Renderer, {
+            response: OPENUI_RESPONSE,
+            library: openuiChatLibrary,
+            isStreaming: false
+          })
+        );
+        statusEl.textContent = "Rendered · offline-capable (local OpenUI assets)";
+      } catch (err) {
+        fail(String(err && err.message ? err.message : err));
+      }
+    })();
+  </script>
+</body>
+</html>
