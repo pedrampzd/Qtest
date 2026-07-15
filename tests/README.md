@@ -38,7 +38,7 @@ Each test deletes `sab.db` before/after and clears `server.online_users`.
 | [03-manual-test-cases.pdf](./output/03-manual-test-cases.pdf) | Manual test cases |
 | [04-manual-execution.mp4](./output/04-manual-execution.mp4) | Screen recording of manual test execution (~16 min, 15 July 2026) |
 | [`tests/`](./) | Automated test suite (pytest) |
-| [05-test-report-openui.html](./output/05-test-report-openui.html) | Interactive OpenUI report (offline; uses `output/openui-assets/`) |
+| [05-test-report-openui.html](./output/05-test-report-openui.html) | Interactive OpenUI report — download & open locally (GitHub shows source only; needs `output/openui-assets/`) |
 
 ## Files
 
